@@ -18,15 +18,17 @@ class TestExpo(unittest.TestCase):
         self.assertEqual(exponential.power_one(2), 2)
         self.assertEqual(exponential.power_one(55), 55)
 
-        self.assertRaises(ValueError, exponential.power_one, 0)
+        #context manager:
+        with self.assertRaises(ValueError):
+            exponential.power_one(0)
 
     def test_add_two_powers(self):
         self.assertEqual(exponential.add_two_powers(2, 2, 3), 32)
         self.assertEqual(exponential.add_two_powers(3, 2, 1), 27)
         self.assertEqual(exponential.add_two_powers(4, 1, 0), 4)
 
-    # def test_minus_power(self):
-    #     self.assertTrue(exponential.minus_power())
+    def test_minus_power(self):
+        self.assertTrue(exponential.minus_power(1, 2), 0.25)
 
 if __name__ == '__main__':
     unittest.main()
